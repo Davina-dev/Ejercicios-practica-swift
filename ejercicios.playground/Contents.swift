@@ -95,7 +95,7 @@ import UIKit
         case delantero
         
     };
- */
+
 //🤖 EJERCICIO 5
 
     //crear clase con atributos para representar a los miembros que participan en una selección mundial y un enumerado que los diferencie por tipos
@@ -118,35 +118,42 @@ import UIKit
     };
 
     var myTeam:WorldTeamMembrers = WorldTeamMembrers();
+ */
 
 //🤖 EJERCICIO 6
 
 //Crear las clases necesarias, con los atributos mínimos, para representar las selecciones de fútbol del Mundial de fútbol 2022, por ejemplo: Una clase que represente el Mundial, necesitaremos que contenga un listado de Selecciones, cada selección tendrá sus atributos, como nombre, país, jugadores, seleccionador, etc.
 
-class Seleccion{
-    var nombre:String;
-    var pais: String;
-    var jugadores:[String];
-    var eliminado:Bool = false;
-    var seleccionador: String;
+    class Seleccion{
+        var nombre:String;
+        var pais: String;
+        var jugadores:[String];
+        var eliminado:Bool = false;
+        var seleccionador: String;
 
-    
-    init(nombreSeleccion: String, paisSeleccion: String, jugadoresSeleccion:[String], seleccionador: String = "🤷‍♂️" ){
-        self.nombre = nombreSeleccion;
-        self.jugadores = jugadoresSeleccion;
-        self.pais = paisSeleccion;
-        self.seleccionador = seleccionador;
+        
+        init(nombreSeleccion: String, paisSeleccion: String, jugadoresSeleccion:[String], seleccionador: String = "🤷‍♂️" ){
+            self.nombre = nombreSeleccion;
+            self.jugadores = jugadoresSeleccion;
+            self.pais = paisSeleccion;
+            self.seleccionador = seleccionador;
+        }
     }
-}
 
-class SeleccionesFutbolMundial{
-    var listaSelecciones: [Seleccion] = []
-    
-    init(equiposParticipantes:[Seleccion]) {
-        self.listaSelecciones = equiposParticipantes;
+    class SeleccionesFutbolMundial{
+        var listaSelecciones: [Seleccion] = []
+        
+        init(equiposParticipantes:[Seleccion]) {
+            self.listaSelecciones = equiposParticipantes;
+        }
+        
     }
-    
-}
-var seleccion1: Seleccion = Seleccion(nombreSeleccion:"a", paisSeleccion: "🏴‍☠️", jugadoresSeleccion: ["j1", "j2", "j3"])
-var seleccion2: Seleccion = Seleccion(nombreSeleccion:"b", paisSeleccion: "🏁", jugadoresSeleccion: ["j1", "j2", "j3"])
-var miSeleccion:SeleccionesFutbolMundial = SeleccionesFutbolMundial(equiposParticipantes: [seleccion1,seleccion2])
+    var seleccion1: Seleccion = Seleccion(nombreSeleccion:"a", paisSeleccion: "🏴‍☠️", jugadoresSeleccion: ["j1", "j2", "j3"])
+    var seleccion2: Seleccion = Seleccion(nombreSeleccion:"b", paisSeleccion: "🏁", jugadoresSeleccion: ["j1", "j2", "j3"])
+    var miSeleccion:SeleccionesFutbolMundial = SeleccionesFutbolMundial(equiposParticipantes: [seleccion1,seleccion2])
+
+
+
+//🤖 EJERCICIO 7
+
+    //
