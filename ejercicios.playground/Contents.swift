@@ -139,8 +139,8 @@ import UIKit
         }
     }
 
-    class WorldCup{
-        var nationalTeamList: [NationalTeam] = []
+class WorldCup{
+    var nationalTeamList: [NationalTeam];
         
         init(participatingTeams:[NationalTeam]) {
             self.nationalTeamList = participatingTeams;
@@ -153,15 +153,32 @@ import UIKit
     var team3: NationalTeam = NationalTeam(nameTeam:"C", countryTeam: "🏳",  playersTeam: ["p1", "p2", "p3"])
     var team4: NationalTeam = NationalTeam(nameTeam:"D", countryTeam: "🏴",  playersTeam: ["p1", "p2", "p3"])
     var team5: NationalTeam = NationalTeam(nameTeam:"E", countryTeam: "🚩",  playersTeam: ["p1", "p2", "p3"])
-    var mySeleccion:WorldCup = WorldCup(participatingTeams:[team1,team2, team3, team4, team5])
- 
+   
+    var myTeams:WorldCup = WorldCup(participatingTeams:[team1 ,team2, team3, team4, team5])
 //🤖 EJERCICIO 7
 
     // Crear una clase para representar los partidos entre selecciones, deberá contener atributos como equipo local, visitante y resultado como mínimo. Generar una lista aleatoria de partidos entre la lista de selecciones anteriores y hacer un print de este estilo por partido: Partido: España 3 - 1 Brasil
 
-/*class Match{
-    var localTeam: Selection;
-    var visitTeam: Selection;
-    var result:[Int] = [0,0]
+
+var localNationalTeamRandom = myTeams.nationalTeamList.randomElement();
+var visitNationalTeamRandom = myTeams.nationalTeamList.randomElement();
+
+
+class Match{
+    var localTeam: NationalTeam? ;
+    var visitTeam: NationalTeam?;
+    var resultLocalTeam: Int = Int.random(in: 0...10)
+    var resultVisitTime: Int = Int.random(in: 0...10)
     
-}*/
+    init(localNationalTeamRandom :NationalTeam, visitNationalTeamRandom:NationalTeam){
+        if(localNationalTeamRandom.name != visitNationalTeamRandom.name){
+            self.localTeam = localNationalTeamRandom;
+            self.visitTeam = visitNationalTeamRandom;
+        };
+       
+    }
+}
+
+
+var myMatch1: Match = Match(localNationalTeamRandom: localNationalTeamRandom! , visitNationalTeamRandom: visitNationalTeamRandom!)
+var myMatch2: Match = Match(localNationalTeamRandom: localNationalTeamRandom! , visitNationalTeamRandom: visitNationalTeamRandom!)
