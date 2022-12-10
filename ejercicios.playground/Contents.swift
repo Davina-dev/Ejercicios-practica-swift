@@ -46,7 +46,7 @@ import UIKit
     }
     print("Sum of the first 50 prime numbers: \(sum)")
 
-*/
+
 
 //🤖 EJERCICIO 3
 
@@ -55,29 +55,43 @@ import UIKit
                              "Modric”", "Militao", "Morata", "Valverde", "Benzema", "Piqué" ];
 
 
-func getMoreThanTwoVowels(list: [String] = players)->[String]{
-    var vowels : String = "aeiou"
-    var countVowels:Int = 0;
-    var listThanTwoVowels : [String]=[];
-
-    
-    for player in players {
-        for char in player{
-            if( vowels.contains(char)){
-                countVowels += 1;
-            }
-        }
-        if(countVowels > 1){
-            listThanTwoVowels.append(player)
-        }
-        countVowels = 0;
-    }
-    return(listThanTwoVowels)
-}
-      
-
-getMoreThanTwoVowels()
-
-  
+    func getMoreThanTwoVowels(list: [String] = players)->[String]{
+        var vowels : String = "aeiou"
+        var countVowels:Int = 0;
+        var listThanTwoVowels : [String]=[];
 
         
+        for player in players {
+            for char in player{
+                if( vowels.contains(char)){
+                    countVowels += 1;
+                }
+            }
+            if(countVowels > 1){
+                listThanTwoVowels.append(player)
+            }
+            countVowels = 0;
+        }
+        return(listThanTwoVowels)
+     }
+          
+
+    getMoreThanTwoVowels()
+
+ */
+  
+//🤖 EJERCICIO 4
+
+    //crear enum  que permita indicar la posición en el campo de un jugador de fútbol, por ejemplo: Portero, Lateral Derecho, Central, Lateral Izquierdo, Mediocentro, Extremo Derecha, Extremo Izquierda, Delantero, etc
+        
+    enum PlayerPosition {
+        case portero
+        case lateralIzquierda
+        case central
+        case lateralDerecho
+        case mediocentro
+        case extremoDerecho
+        case extremoIzquierdo
+        case delantero
+        
+    }
