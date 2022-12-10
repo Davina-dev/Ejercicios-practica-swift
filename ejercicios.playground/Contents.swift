@@ -110,7 +110,7 @@ class WorldTeamMembrers {
     private var nameTeam:String;
     private var workTeam:[Members];
     
-    init(name: String = "team", player: Members = .player("playerDefoult"),selector: Members = .selector("selectorDefault"), doctor: Members = .player("doctorDefoult")){
+    init(name: String = "teamDefault", player: Members = .player("playerDefault"),selector: Members = .selector("selectorDefault"), doctor: Members = .player("doctorDefault")){
         self.nameTeam = name;
         self.workTeam = [player, selector, doctor];
      
