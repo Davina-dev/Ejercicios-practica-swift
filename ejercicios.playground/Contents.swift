@@ -119,41 +119,49 @@ import UIKit
 
     var myTeam:WorldTeamMembrers = WorldTeamMembrers();
  */
-
-//🤖 EJERCICIO 6
+ //🤖 EJERCICIO 6
 
 //Crear las clases necesarias, con los atributos mínimos, para representar las selecciones de fútbol del Mundial de fútbol 2022, por ejemplo: Una clase que represente el Mundial, necesitaremos que contenga un listado de Selecciones, cada selección tendrá sus atributos, como nombre, país, jugadores, seleccionador, etc.
 
-    class Seleccion{
-        var nombre:String;
-        var pais: String;
-        var jugadores:[String];
-        var eliminado:Bool = false;
-        var seleccionador: String;
+    class NationalTeam{
+        var name:String;
+        var country: String;
+        var players:[String];
+        var removed:Bool = false;
+        var coach: String;
 
         
-        init(nombreSeleccion: String, paisSeleccion: String, jugadoresSeleccion:[String], seleccionador: String = "🤷‍♂️" ){
-            self.nombre = nombreSeleccion;
-            self.jugadores = jugadoresSeleccion;
-            self.pais = paisSeleccion;
-            self.seleccionador = seleccionador;
+        init(nameTeam: String, countryTeam: String, playersTeam:[String], coach: String = "🤷‍♂️" ){
+            self.name = nameTeam;
+            self.players = playersTeam;
+            self.country = countryTeam;
+            self.coach = coach;
         }
     }
 
-    class SeleccionesFutbolMundial{
-        var listaSelecciones: [Seleccion] = []
+    class WorldCup{
+        var nationalTeamList: [NationalTeam] = []
         
-        init(equiposParticipantes:[Seleccion]) {
-            self.listaSelecciones = equiposParticipantes;
+        init(participatingTeams:[NationalTeam]) {
+            self.nationalTeamList = participatingTeams;
         }
         
     }
-    var seleccion1: Seleccion = Seleccion(nombreSeleccion:"a", paisSeleccion: "🏴‍☠️", jugadoresSeleccion: ["j1", "j2", "j3"])
-    var seleccion2: Seleccion = Seleccion(nombreSeleccion:"b", paisSeleccion: "🏁", jugadoresSeleccion: ["j1", "j2", "j3"])
-    var miSeleccion:SeleccionesFutbolMundial = SeleccionesFutbolMundial(equiposParticipantes: [seleccion1,seleccion2])
 
-
-
+    var team1: NationalTeam = NationalTeam(nameTeam:"A", countryTeam: "🏴‍☠️", playersTeam: ["p1", "p2", "p3"])
+    var team2: NationalTeam = NationalTeam(nameTeam:"B", countryTeam: "🏁",  playersTeam: ["p1", "p2", "p3"])
+    var team3: NationalTeam = NationalTeam(nameTeam:"C", countryTeam: "🏳",  playersTeam: ["p1", "p2", "p3"])
+    var team4: NationalTeam = NationalTeam(nameTeam:"D", countryTeam: "🏴",  playersTeam: ["p1", "p2", "p3"])
+    var team5: NationalTeam = NationalTeam(nameTeam:"E", countryTeam: "🚩",  playersTeam: ["p1", "p2", "p3"])
+    var mySeleccion:WorldCup = WorldCup(participatingTeams:[team1,team2, team3, team4, team5])
+ 
 //🤖 EJERCICIO 7
 
-    //
+    // Crear una clase para representar los partidos entre selecciones, deberá contener atributos como equipo local, visitante y resultado como mínimo. Generar una lista aleatoria de partidos entre la lista de selecciones anteriores y hacer un print de este estilo por partido: Partido: España 3 - 1 Brasil
+
+/*class Match{
+    var localTeam: Selection;
+    var visitTeam: Selection;
+    var result:[Int] = [0,0]
+    
+}*/
