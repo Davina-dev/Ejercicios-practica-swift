@@ -28,7 +28,6 @@ func calculatePrimeList(){
 
 calculatePrimeList()
 
-
     // Imprimir los últimos 10
 let listPrimeReverse = primeNumbersList.reversed()
 
@@ -36,6 +35,19 @@ for(index, num) in listPrimeReverse.enumerated() where index < 10{
     print(num);
 }
     
+
+
+// EJERCICIO 2
+
+    //Calcular la suma de los primeros 50 números primos e imprimir el resultado
+
+    var sum = 0;
+    
+    for(index, num) in primeNumbersList.enumerated() where index < 50{
+        sum += num;
+    }
+    print("Sum of the first 50 prime numbers: \(sum)")
+
 
 
 
