@@ -8,32 +8,32 @@ import UIKit
     func isPrime(num:Int) -> Bool{
         for nPrime in primeNumbersList{
             if(num % nPrime == 0){
-                return false
+                return false;
             }
         }
-        return true
-    }
+        return true;
+    };
        
         
     func calculatePrimeList(){
-        var n = 2
+        var n = 2;
         repeat {
             
             if(isPrime(num: n)){
                 primeNumbersList.append(n);
-            }
+            };
             n += 1;
         } while (primeNumbersList.count < 100)
-    }
+    };
 
-    calculatePrimeList()
+    calculatePrimeList();
 
     // Imprimir los últimos 10
-    let listPrimeReverse = primeNumbersList.reversed()
+    let listPrimeReverse = primeNumbersList.reversed();
 
     for(index, num) in listPrimeReverse.enumerated() where index < 10{
         print(num);
-    }
+    };
     
 
 //🤖 EJERCICIO 2
@@ -43,8 +43,8 @@ import UIKit
     
     for(index, num) in primeNumbersList.enumerated() where index < 50{
         sum += num;
-    }
-    print("Sum of the first 50 prime numbers: \(sum)")
+    };
+    print("Sum of the first 50 prime numbers: \(sum)");
 
 
 
@@ -68,17 +68,17 @@ import UIKit
                 }
             }
             if(countVowels > 1){
-                listThanTwoVowels.append(player)
+                listThanTwoVowels.append(player);
             }
             countVowels = 0;
         }
-        return(listThanTwoVowels)
-     }
+        return(listThanTwoVowels);
+     };
           
 
-    getMoreThanTwoVowels()
+    getMoreThanTwoVowels();
 
- */
+
   
 //🤖 EJERCICIO 4
 
@@ -94,4 +94,32 @@ import UIKit
         case extremoIzquierdo
         case delantero
         
+    };
+ */
+//🤖 EJERCICIO 5
+
+    //crear clase con atributos para representar a los miembros que participan en una selección mundial y un enumerado que los diferencie por tipos
+
+enum Members{
+    case player(String)
+    case selector(String)
+    case doctor(String)
+};
+
+class WorldTeamMembrers {
+    private var nameTeam:String;
+    private var workTeam:[Members];
+    
+    init(name: String = "team", player: Members = .player("playerDefoult"),selector: Members = .selector("selectorDefault"), doctor: Members = .player("doctorDefoult")){
+        self.nameTeam = name;
+        self.workTeam = [player, selector, doctor];
+     
+    
     }
+        
+    
+
+};
+
+var myTeam:WorldTeamMembrers = WorldTeamMembrers();
+
