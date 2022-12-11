@@ -349,28 +349,16 @@ extension Group{
 
       
 
-var World_Cup :WorldCup = WorldCup(listTeams: [team_1, team_2, team_3, team_4, team_5, team_6, team_7, team_8, team_9, team_10, team_11, team_12, team_13, team_14, team_15, team_16, team_17, team_18, team_19, team_20, team_21, team_22, team_23, team_24, team_25, team_26, team_27, team_28, team_28, team_29, team_30, team_31, team_32]);
+    var World_Cup :WorldCup = WorldCup(listTeams: [team_1, team_2, team_3, team_4, team_5, team_6, team_7, team_8, team_9, team_10, team_11, team_12, team_13, team_14, team_15, team_16, team_17, team_18, team_19, team_20, team_21, team_22, team_23, team_24, team_25, team_26, team_27, team_28, team_28, team_29, team_30, team_31, team_32]);
 
-        
-        //genero grupos
+            
+          
     World_Cup.generateGroup();
 
    
 
-  /*      // dentro de cada grupo genero partidos (1 entre todos, el segundo entre todos menos el primero...)
-    var result_LocalTeam: Int = Int.random(in: 0...10)
-    var result_VisitTime: Int = Int.random(in: 0...10)
-
-    var teamFinalsGroup = [String]
-    for select in 0...(finalGroup.groupTeams.count -1){
-        var local_team = finalGroup.groupTeams[select]
-        var visit_team = finalGroup.groupTeams[select + 1]
-        teamFinalsGroup.append(local_team, visit_team)
-    }
-
+  
    
     
-
-        // como ya tengo los resultados de todos, cojo los dos equipos con mas puntos de cada grupo
 
 */
