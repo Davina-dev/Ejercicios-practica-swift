@@ -1,5 +1,5 @@
 import UIKit
-/*
+
 //🤖 EJERCICIO 1
 
     //Calcular y generar lista de 100 primeros núm. primos
@@ -51,8 +51,8 @@ import UIKit
 //🤖 EJERCICIO 3
 
     // Obtener los elementos de la lista que contengan más de dos vocales
-    var players:[String] = ["Vinicius", "Messi", "Ronaldo", "Pedri", "Mbappe",
-                             "Modric”", "Militao", "Morata", "Valverde", "Benzema", "Piqué" ];
+    var players:[String] = ["Vinicius","ki", "Messi", "Ronaldo","pi","Pedri", "Mbappe",
+                             "Modric”", "Militao", "Morata", "Valverde", "Benzema", "Piqué","lo" ];
 
 
     func getMoreThanTwoVowels(list: [String] = players)->[String]{
@@ -100,85 +100,139 @@ import UIKit
 
     //crear clase con atributos para representar a los miembros que participan en una selección mundial y un enumerado que los diferencie por tipos
 
-    enum Members{
+    enum Member{
         case player(String)
-        case selector(String)
+        case coach(String)
         case doctor(String)
     };
 
-    class WorldTeamMembrers {
+    class NationalTeam{
         private var nameTeam:String;
-        private var workTeam:[Members];
+        private var members:[Member];
+        private var country: String
         
-        init(name: String = "team", player: Members = .player("playerDefault"),selector: Members = .selector("selectorDefault"), doctor: Members = .player("doctorDefault")){
+        init(name: String, members: [Member], country: String){
             self.nameTeam = name;
-            self.workTeam = [player, selector, doctor];
+            self.members = members;
+            self .country = country;
         }
             
     };
 
-    var myTeam:WorldTeamMembrers = WorldTeamMembrers();
- */
+    var team1 : NationalTeam = NationalTeam(name: "nameTeam1", members: [.coach("Entrenador1"), .doctor("doctor1"), .player("Vinicius"), .player("Messi"),.player("Pedri"),.player("Piqué"),.player("Valverde")], country: "Spain" );
+
+    var team2 : NationalTeam = NationalTeam(name: "nameTeam2", members: [.coach("Entrenador2"), .doctor("doctor2"), .player("Ro-ró"), .player("Akram"),.player("Ali"),.player("Afif"),.player("Boudiaf")], country: "Qatar" );
+
+
+    var team3 : NationalTeam = NationalTeam(name: "nameTeam3", members: [.coach("Entrenador3"), .doctor("doctor3"), .player("Enner"), .player("Ibarra"),.player("Piero"),.player("Gonzalo"),.player("Jeremy")], country: "Ecuador" );
+
+
+    var team4 : NationalTeam = NationalTeam(name: "nameTeam4", members: [.coach("Entrenador4"), .doctor("doctor4"), .player("Kalidou"), .player("Mendy"),.player("Diallo"),.player("Ismaïla"),.player("Valverde")], country: "Senegal" );
+
+
  //🤖 EJERCICIO 6
 
 //Crear las clases necesarias, con los atributos mínimos, para representar las selecciones de fútbol del Mundial de fútbol 2022, por ejemplo: Una clase que represente el Mundial, necesitaremos que contenga un listado de Selecciones, cada selección tendrá sus atributos, como nombre, país, jugadores, seleccionador, etc.
 
-    class NationalTeam{
-        var name:String;
-        var country: String;
-        var players:[String];
-        var removed:Bool = false;
-        var coach: String;
-
-        
-        init(nameTeam: String, countryTeam: String, playersTeam:[String], coach: String = "🤷‍♂️" ){
-            self.name = nameTeam;
-            self.players = playersTeam;
-            self.country = countryTeam;
-            self.coach = coach;
-        }
-    }
-
-class WorldCup{
-    var nationalTeamList: [NationalTeam];
-        
-        init(participatingTeams:[NationalTeam]) {
-            self.nationalTeamList = participatingTeams;
-        }
-        
-    }
-
-    var team1: NationalTeam = NationalTeam(nameTeam:"A", countryTeam: "🏴‍☠️", playersTeam: ["p1", "p2", "p3"])
-    var team2: NationalTeam = NationalTeam(nameTeam:"B", countryTeam: "🏁",  playersTeam: ["p1", "p2", "p3"])
-    var team3: NationalTeam = NationalTeam(nameTeam:"C", countryTeam: "🏳",  playersTeam: ["p1", "p2", "p3"])
-    var team4: NationalTeam = NationalTeam(nameTeam:"D", countryTeam: "🏴",  playersTeam: ["p1", "p2", "p3"])
-    var team5: NationalTeam = NationalTeam(nameTeam:"E", countryTeam: "🚩",  playersTeam: ["p1", "p2", "p3"])
    
-    var myTeams:WorldCup = WorldCup(participatingTeams:[team1 ,team2, team3, team4, team5])
+
+    class WorldCup{
+        var listNationalTeam: [NationalTeam];
+            
+        init(listTeams: [NationalTeam]) {
+                self.listNationalTeam = listTeams;
+            }
+        }
+
+    var listTeams :WorldCup = WorldCup(listTeams: [team1, team2, team3, team4 ])
+      
 //🤖 EJERCICIO 7
 
     // Crear una clase para representar los partidos entre selecciones, deberá contener atributos como equipo local, visitante y resultado como mínimo. Generar una lista aleatoria de partidos entre la lista de selecciones anteriores y hacer un print de este estilo por partido: Partido: España 3 - 1 Brasil
 
 
-var localNationalTeamRandom = myTeams.nationalTeamList.randomElement();
-var visitNationalTeamRandom = myTeams.nationalTeamList.randomElement();
+    class Match{
+        var localTeam: NationalTeam;
+        var visitTeam: NationalTeam;
+        var resultLocalTeam: Int;
+        var resultVisitTeam: Int;
+        
+        init(localTeam: NationalTeam, visitTeam: NationalTeam, optionalTeam: NationalTeam, resultLocalTeam: Int, resultVisitTeam: Int){
+          
+            self.resultLocalTeam = resultLocalTeam;
+            self.resultVisitTeam = resultVisitTeam;
+        
+            if(resultLocalTeam == resultVisitTeam){
+                self.visitTeam = optionalTeam;
+            }
+            
+            self.localTeam = localTeam;
+            self.visitTeam = visitTeam;
+        }
+            
+    }
 
-
-class Match{
-    var localTeam: NationalTeam? ;
-    var visitTeam: NationalTeam?;
+    var localTeamRandom: NationalTeam = listTeams.listNationalTeam.randomElement()!
+    var visitTeamRandom: NationalTeam = listTeams.listNationalTeam.randomElement()!
+    var optionalTeamRandom: NationalTeam = listTeams.listNationalTeam.randomElement()!
     var resultLocalTeam: Int = Int.random(in: 0...10)
     var resultVisitTime: Int = Int.random(in: 0...10)
+
+    var firstMatch: Match = Match( localTeam: localTeamRandom, visitTeam: visitTeamRandom, optionalTeam: optionalTeamRandom,  resultLocalTeam: resultLocalTeam, resultVisitTeam: resultVisitTime)
+
+   
+   
+
+//🤖 EJERCICIO 8
+
+    // Generar de forma aleatoria, dentro de la clase Mundial, un listado de grupos con un máximo de 4 selecciones por grupo, se puede crear una clase nueva Grupo que contenga el nombre del grupo, listado de participantes y listado de partidos. Por ejemplo: Grupo A España, Brasil, Francia, Alemania.
+
+
+/*
+class GroupWorldCup {
+    var group : String
+    var matches: WorldCup
     
-    init(localNationalTeamRandom :NationalTeam, visitNationalTeamRandom:NationalTeam){
-        if(localNationalTeamRandom.name != visitNationalTeamRandom.name){
-            self.localTeam = localNationalTeamRandom;
-            self.visitTeam = visitNationalTeamRandom;
-        };
-       
+    
+    init(groupTeam nameGroup: String ,nameTeam : WorldCup){
+        self.matches = nameTeam;
+        self.group = nameGroup;
     }
 }
 
+extension WorldCup{
+    func generateGroupRandom(groupTeam:GroupWorldCup) {
+        
+        var listGroup: [String] = [];
+        var nameGroup = groupTeam.matches
+        var team = groupTeam.group
+    
+        func get teamsByGroup() -> [String]{
+            repeat {
+                listGroup.append(team)
+                };
+            } while (listGroup.count < 4)
+               return listGroup
+        };
+        }
+      
+        
+        
+    }
+}
 
-var myMatch1: Match = Match(localNationalTeamRandom: localNationalTeamRandom! , visitNationalTeamRandom: visitNationalTeamRandom!)
-var myMatch2: Match = Match(localNationalTeamRandom: localNationalTeamRandom! , visitNationalTeamRandom: visitNationalTeamRandom!)
+var firstGroup: GroupWorldCup = GroupWorldCup ( groupTeam: "A", nameTeam: myTeams )
+
+myTeams.generateGroupRandom(groupTeam: firstGroup)
+*/
+
+
+
+//🤖 EJERCICIO 9
+
+    // Para añadir a cada Grupo los puntos de cada selección habrá que contabilizar las victorias con 3 puntos, empates con 1 y derrotas con 0. Añadir una función en la clase Grupo que le pasemos una selección y nos devuelva sus puntos.
+
+
+//🤖 EJERCICIO 10
+
+    // Generar los partidos del Mundial en cada grupo y calcular las dos primeras selecciones de cada grupo y hacer un print con los clasificados
