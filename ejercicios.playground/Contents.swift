@@ -56,7 +56,7 @@ import UIKit
 
 
     func getMoreThanTwoVowels(list: [String] = players)->[String]{
-        var vowels : String = "aeiou"
+        let vowels : String = "aeiou"
         var countVowels:Int = 0;
         var listThanTwoVowels : [String]=[];
 
@@ -107,9 +107,9 @@ import UIKit
     };
 
     class NationalTeam{
-        private var nameTeam:String;
-        private var members:[Member];
-        private var country: String
+        var nameTeam:String;
+        var members:[Member];
+        var country: String
         
         init(name: String, members: [Member], country: String){
             self.nameTeam = name;
@@ -129,6 +129,10 @@ import UIKit
 
     var team4 : NationalTeam = NationalTeam(name: "nameTeam4", members: [.coach("Entrenador4"), .doctor("doctor4"), .player("Kalidou"), .player("Mendy"),.player("Diallo"),.player("Ismaïla"),.player("Valverde")], country: "Senegal" );
 
+    var team5 : NationalTeam = NationalTeam(name: "nameTeam5", members: [.coach("Entrenador5"), .doctor("doctor5"), .player("Ka"), .player("Me"),.player("Di"),.player("Is"),.player("Val")], country: "Francia" );
+
+    var team6 : NationalTeam = NationalTeam(name: "nameTeam6", members: [.coach("Entrenador6"), .doctor("doctor6"), .player("Kaju"), .player("Meli"),.player("Dino"),.player("Isma"),.player("Vagi")], country: "Malta" );
+
 
  //🤖 EJERCICIO 6
 
@@ -144,7 +148,7 @@ import UIKit
             }
         }
 
-    var listTeams :WorldCup = WorldCup(listTeams: [team1, team2, team3, team4 ])
+    var listTeamsWorldCup :WorldCup = WorldCup(listTeams: [team1, team2, team3, team4, team5, team6 ])
       
 //🤖 EJERCICIO 7
 
@@ -157,28 +161,29 @@ import UIKit
         var resultLocalTeam: Int;
         var resultVisitTeam: Int;
         
-        init(localTeam: NationalTeam, visitTeam: NationalTeam, optionalTeam: NationalTeam, resultLocalTeam: Int, resultVisitTeam: Int){
+        init(localTeam: NationalTeam, visitTeam: NationalTeam, resultLocalTeam: Int, resultVisitTeam: Int){
           
             self.resultLocalTeam = resultLocalTeam;
             self.resultVisitTeam = resultVisitTeam;
-        
-            if(resultLocalTeam == resultVisitTeam){
-                self.visitTeam = optionalTeam;
-            }
-            
             self.localTeam = localTeam;
             self.visitTeam = visitTeam;
         }
             
     }
 
-    var localTeamRandom: NationalTeam = listTeams.listNationalTeam.randomElement()!
-    var visitTeamRandom: NationalTeam = listTeams.listNationalTeam.randomElement()!
-    var optionalTeamRandom: NationalTeam = listTeams.listNationalTeam.randomElement()!
+    var localTeamRandom: NationalTeam
+    var visitTeamRandom: NationalTeam
+
+    repeat{
+        localTeamRandom = listTeamsWorldCup.listNationalTeam.randomElement()!
+        visitTeamRandom = listTeamsWorldCup.listNationalTeam.randomElement()!
+    }while( localTeamRandom === visitTeamRandom)
+  
+  
     var resultLocalTeam: Int = Int.random(in: 0...10)
     var resultVisitTime: Int = Int.random(in: 0...10)
 
-    var firstMatch: Match = Match( localTeam: localTeamRandom, visitTeam: visitTeamRandom, optionalTeam: optionalTeamRandom,  resultLocalTeam: resultLocalTeam, resultVisitTeam: resultVisitTime)
+    var firstMatch: Match = Match( localTeam: localTeamRandom, visitTeam: visitTeamRandom, resultLocalTeam: resultLocalTeam, resultVisitTeam: resultVisitTime)
 
    
    
@@ -187,51 +192,49 @@ import UIKit
 
     // Generar de forma aleatoria, dentro de la clase Mundial, un listado de grupos con un máximo de 4 selecciones por grupo, se puede crear una clase nueva Grupo que contenga el nombre del grupo, listado de participantes y listado de partidos. Por ejemplo: Grupo A España, Brasil, Francia, Alemania.
 
-
-/*
-class GroupWorldCup {
-    var group : String
-    var matches: WorldCup
-    
-    
-    init(groupTeam nameGroup: String ,nameTeam : WorldCup){
-        self.matches = nameTeam;
-        self.group = nameGroup;
-    }
+ class Group {
+    var groupName: String = "";
+    var groupTeams: [String] = [];
+     
+    func addTeam( team:String ){
+        groupTeams.append(team);
+    };
 }
 
 extension WorldCup{
-    func generateGroupRandom(groupTeam:GroupWorldCup) {
-        
-        var listGroup: [String] = [];
-        var nameGroup = groupTeam.matches
-        var team = groupTeam.group
     
-        func get teamsByGroup() -> [String]{
-            repeat {
-                listGroup.append(team)
-                };
-            } while (listGroup.count < 4)
-               return listGroup
-        };
+    func nextGenerateWorldGroup() -> Group{
+        let groupNames: [String] = ["A", "B", "C", "D", "E", "F", "G", "H", "I"];
+        var listOfSelectedTeams:[NationalTeam] = listNationalTeam.shuffled();
+        var group: Group = Group()
+        var teamsPerGroup = 4;
+       
+       
+        for groupToAssign in 0...(listOfSelectedTeams.count)-1 {
+            group.groupName = groupNames[groupToAssign]
+           
+            var teamIndex = 0;
+            while(teamIndex < teamsPerGroup){
+                group.addTeam( team: listOfSelectedTeams[teamIndex].country )
+                teamIndex += 1;
+            }
+            break
         }
-      
-        
-        
+        return group
     }
 }
 
-var firstGroup: GroupWorldCup = GroupWorldCup ( groupTeam: "A", nameTeam: myTeams )
-
-myTeams.generateGroupRandom(groupTeam: firstGroup)
-*/
-
+listTeamsWorldCup.nextGenerateWorldGroup()
 
 
 //🤖 EJERCICIO 9
 
     // Para añadir a cada Grupo los puntos de cada selección habrá que contabilizar las victorias con 3 puntos, empates con 1 y derrotas con 0. Añadir una función en la clase Grupo que le pasemos una selección y nos devuelva sus puntos.
 
+extension Group{
+    
+    
+}
 
 //🤖 EJERCICIO 10
 
