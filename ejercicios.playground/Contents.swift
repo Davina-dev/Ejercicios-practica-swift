@@ -109,7 +109,8 @@ import UIKit
     class NationalTeam{
         var nameTeam:String;
         var members:[Member];
-        var country: String
+        var country: String;
+        var points = 0;
         
         init(name: String, members: [Member], country: String){
             self.nameTeam = name;
@@ -167,6 +168,8 @@ import UIKit
             self.resultVisitTeam = resultVisitTeam;
             self.localTeam = localTeam;
             self.visitTeam = visitTeam;
+           
+            
         }
             
     }
@@ -183,7 +186,8 @@ import UIKit
     var resultLocalTeam: Int = Int.random(in: 0...10)
     var resultVisitTime: Int = Int.random(in: 0...10)
 
-    var firstMatch: Match = Match( localTeam: localTeamRandom, visitTeam: visitTeamRandom, resultLocalTeam: resultLocalTeam, resultVisitTeam: resultVisitTime)
+var firstMatch: Match = Match( localTeam: localTeamRandom, visitTeam: visitTeamRandom, resultLocalTeam: resultLocalTeam, resultVisitTeam: resultVisitTime);
+var secondtMatch: Match = Match( localTeam: localTeamRandom, visitTeam: visitTeamRandom, resultLocalTeam: resultLocalTeam, resultVisitTeam: resultVisitTime);
 
    
    
@@ -203,7 +207,7 @@ import UIKit
 
 extension WorldCup{
     
-    func nextGenerateWorldGroup() -> Group{
+    func nextGenerateGroup() -> Group{
         let groupNames: [String] = ["A", "B", "C", "D", "E", "F", "G", "H", "I"];
         var listOfSelectedTeams:[NationalTeam] = listNationalTeam.shuffled();
         var group: Group = Group()
@@ -224,18 +228,40 @@ extension WorldCup{
     }
 }
 
-listTeamsWorldCup.nextGenerateWorldGroup()
+listTeamsWorldCup.nextGenerateGroup()
 
 
 //🤖 EJERCICIO 9
 
     // Para añadir a cada Grupo los puntos de cada selección habrá que contabilizar las victorias con 3 puntos, empates con 1 y derrotas con 0. Añadir una función en la clase Grupo que le pasemos una selección y nos devuelva sus puntos.
+extension Match{
+    
+    func calculatePoints(){
+        if(self.resultLocalTeam > self.resultVisitTeam){
+            self.localTeam.points += 3
+        } else if(self.resultLocalTeam < self.resultVisitTeam){
+            self.visitTeam.points += 3
+        } else{
+            self.visitTeam.points += 1;
+            self.localTeam.points += 1;
+        }
+    }
+}
 
 extension Group{
-    
+    func generatepointsCounter(team: NationalTeam)-> Int{
+        return team.points
+    }
     
 }
+
 
 //🤖 EJERCICIO 10
 
     // Generar los partidos del Mundial en cada grupo y calcular las dos primeras selecciones de cada grupo y hacer un print con los clasificados
+
+//genero copa
+//genero grupos
+// dentro de cada grupo genero partidos (1 entre todos, el segundo entre todos menos el primero...)
+// como ya tengo los resultados de todos, cojo los dos equipos con mas puntos de cada grupo
+
